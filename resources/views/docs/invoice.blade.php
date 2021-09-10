@@ -10,14 +10,14 @@
 
         <div class="d-sm-flex align-items-center">
             <div class="mr-4">
-                <img src="{{ asset('img/alphalogo.svg') }}" style="height: 110px">
+                <img src="{{ asset('img/alphalogo.png') }}" style="height: 110px">
             </div>
 
             <div>
                 <h3 class="font-weight-600" style="line-height: 1.2">Alpha and Jam Limited</h3>
-                <div>Magnate Centre, Lantana Road, Westlands, Nairobi</div>
-                <div><strong>Email:&nbsp;</strong>info@magnate-ventures.com</div>
-                <div><strong>Tel:&nbsp;</strong>0722 204 400</div>
+                <div>The MIrage, Chiromo road, Nairobi</div>
+                <div><strong>Email:&nbsp;</strong>info@alphaandjam.net</div>
+                <div><strong>Tel:&nbsp;</strong>0704 607 893</div>
             </div>
         </div>
     </div>
