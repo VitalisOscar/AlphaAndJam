@@ -16,15 +16,12 @@ trait CreatesNewAds{
      * @return Advert|bool
      */
     function createNewAd($data, $media = null){
-        $media_type = ($media != null) ? strtolower(explode("/", $media->getClientMimeType())[0]) : null;
+        $media_type = ($media != null) ? strtolower(explode("/", $media->getClientMimeType())[0]) : 'image';
 
-        $media_path = null;
-        if($media_type != null){
-            $path = $this->getUploadDir($media_type);
+        $path = $this->getUploadDir($media_type);
 
-            // Upload media
-            $media_path = $media->store($path, 'public');
-        }
+        // Upload media
+        $media_path = $media->store($path, 'public');
 
         return $this->saveNewAd($data, $media_type, $media_path);
     }
