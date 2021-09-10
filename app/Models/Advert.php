@@ -137,8 +137,8 @@ class Advert extends Model implements AdvertInterface
         return $this->hasManyThrough(MpesaPayment::class, Invoice::class);
     }
 
-    function getContentAttribute(){
-        $content = $this->content;
+    function getContentAttribute($val){
+        $content = $val;
 
         if(!is_array($content)){
             $content = json_decode($content, true);
