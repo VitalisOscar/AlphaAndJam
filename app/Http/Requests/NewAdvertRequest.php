@@ -100,7 +100,7 @@ class NewAdvertRequest extends FormRequest
             'slots.*.id.required' => 'All initial slots are required',
         ];
 
-        $mime = $this->file('media') != null ? $this->file('media')->getMimeType() : null;
+        $mime = $this->file('media') != null ? $this->file('media')->getClientMimeType() : null;
         if($mime && explode('/', $mime)[0] == 'image'){
             $messages['media.min'] = 'Image file size should be a maximum of 10MB';
             $messages['media.max'] = 'Image file size should be a maximum of 10MB';
