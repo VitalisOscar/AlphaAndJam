@@ -97,7 +97,7 @@ Advert Info
                                         Official Contacts:
                                     </th>
 
-                                    <td>{{ $owner->email.', '.$owner->business['phone'] }}</td>
+                                    <td>{{ $owner->email }}</td>
                                 </tr>
 
                                 <tr>
@@ -105,7 +105,7 @@ Advert Info
                                         Personnel Contact:
                                     </th>
 
-                                    <td>{{ $owner->user['name'].' ('.$owner->user['position'].') - '.$owner->user['phone'] }}</td>
+                                    <td>{{ $owner->operator_name.' ('.$owner->operator_position.') - '.$owner->operator_phone }}</td>
                                 </tr>
                             </table>
                             @else
