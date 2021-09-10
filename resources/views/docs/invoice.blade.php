@@ -15,7 +15,7 @@
 
             <div>
                 <h3 class="font-weight-600" style="line-height: 1.2">Alpha and Jam Limited</h3>
-                <div>The MIrage, Chiromo road, Nairobi</div>
+                <div>The Mirage, Chiromo road, Nairobi</div>
                 <div><strong>Email:&nbsp;</strong>info@alphaandjam.net</div>
                 <div><strong>Tel:&nbsp;</strong>0704 607 893</div>
             </div>

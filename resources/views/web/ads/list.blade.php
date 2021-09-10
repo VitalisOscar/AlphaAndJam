@@ -100,7 +100,7 @@
                             <div class="d-flex">
                                 @if($ad->isApproved())
                                 @if($ad->invoice->isUnpaid())
-                                <form action="{{ route('web.user.invoices.single', $ad->invoice->number) }}" method="get" class="w-50">
+                                <form action="{{ route('web.user.invoices.single.payment.mpesa', $ad->invoice->number) }}" method="get" class="w-50">
                                     <input type="hidden" name="pay" value="1">
                                     <button class="btn btn-block btn-outline-dark btn-sm shadow-none mr-1"><i class="ni ni-money-coins mr-1"></i>Pay Now</button>
                                 </form>
