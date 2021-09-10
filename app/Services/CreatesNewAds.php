@@ -7,6 +7,8 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 
 trait CreatesNewAds{
+    use ManagesSlots;
+
     /**
      * Create a new ad
      * @param array $data
@@ -14,7 +16,7 @@ trait CreatesNewAds{
      * @return Advert|bool
      */
     function createNewAd($data, $media = null){
-        $media_type = ($media != null) ? strtolower(explode("/", $media->getMimeType())[0]) : null;
+        $media_type = ($media != null) ? strtolower(explode("/", $media->getClientMimeType())[0]) : null;
 
         $media_path = null;
         if($media_type != null){
@@ -54,9 +56,6 @@ trait CreatesNewAds{
         $slots = $this->getSlotsFromRequest($data);
 
         $content = [
-            'text' => isset($data['text']) ? $data['text']:null,
-            'phone' => isset($data['phone']) ? $data['phone']:null,
-            'email' => isset($data['email']) ? $data['email']:null,
             'media_type' => $media_type,
             'media_path' => $media_path,
         ];
