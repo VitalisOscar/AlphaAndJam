@@ -69,15 +69,15 @@
                         <table>
                             <tr>
                                 <td class="pr-5"><strong>Client Name:</strong></td>
-                                <td>{{ $client->business['name'] }}</td>
+                                <td>{{ $client->name }}</td>
                             </tr>
                             <tr>
                                 <td><strong>Email:</strong></td>
-                                <td>{{ $client->business['email'] }}</td>
+                                <td>{{ $client->email }}</td>
                             </tr>
                             <tr>
                                 <td><strong>Phone:</strong></td>
-                                <td>{{ $client->business['phone'] }}</td>
+                                <td>{{ $client->operator_phone }}</td>
                             </tr>
                         </table>
                     </div>
