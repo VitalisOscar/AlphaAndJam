@@ -52,11 +52,12 @@ class NewAdvertRequest extends FormRequest
             'media' => ['nullable', 'file', 'mimetypes:image/png,image/jpg,image/jpeg,video/mp4'],
         ];
 
-        $mime = $this->file('media') != null ? $this->file('media')->getMimeType() : null;
-        if($mime && explode('/', $mime)[0] == 'image'){
-            array_push($rules['media'], 'max:10240', 'dimensions:width=1920,height=1080');
-        }else if($mime && explode('/', $mime)[0] == 'video'){
+        $mime = $this->file('media') != null ? $this->file('media')->getClientMimeType() : null;
+
+        if($mime && explode('/', $mime)[0] == 'video'){
             array_push($rules['media'], 'max:204800', new VideoDimension(1920, 1080));
+        }else{
+            array_push($rules['media'], 'max:10240', 'dimensions:width=1920,height=1080');
         }
 
         // If not adding, advert id must be supplied
