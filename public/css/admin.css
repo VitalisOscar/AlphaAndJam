@@ -1,0 +1,125 @@
+body{
+    background: #f5f6fc;
+    z-index: 0;
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    display: block;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 250px;
+    padding-right: 0;
+    padding-left: 0;
+    background: #fff;
+    box-shadow: 3px 0 5px 0 rgba(0,0,0,.15);;
+    left: 0;
+    z-index: 1000;
+}
+
+.sidebar .scroll-wrapper{
+    position: relative;
+    overflow: hidden !important;
+    padding: 0 !important;
+    height: 100% !important;
+}
+
+.sidebar .scroll-wrapper .scroll-inner{
+    position: relative !important;
+    top: 0;
+    left: 0;
+    overflow-y: auto !important;
+    width: auto !important;
+    max-width: none !important;
+    height: calc(100vh - 65px) !important;
+    margin: 0;
+    padding: 0;
+    border: none !important;
+    scrollbar-width: thin;
+}
+
+.sidebar-header, .header{
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.navbar-brand{
+    color: rgba(0,0,0,.7) !important;
+}
+
+.sidebar-inner{
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.navbar-nav{
+    flex-direction: column;
+    margin-right: -.5rem;
+    margin-left: -.5rem;
+}
+
+.nav-item{
+    margin-top: 3px;
+    transition: .25s all !important;
+}
+
+.nav-item:hover{
+    background: #eaeaea;
+}
+
+.nav-item i{
+    font-size: .9375rem;
+    line-height: 1.5rem;
+    min-width: 2rem;
+}
+
+.nav-link{
+    padding: .675rem 1rem !important;
+    font-size: .875rem;
+    font-weight: 500;
+    color: rgba(0,0,0,.6);
+    display: flex;
+    align-items: center;
+    font-weight: 500 !important;
+    border-radius: .375rem !important;
+}
+
+.nav-link.active{
+    background: #c9e2c9;
+    color: rgba(0,0,0,.9) !important;
+}
+
+
+.sidebar-heading{
+    font-size: .88rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 0 !important;
+    margin-top: 10px;
+}
+
+.main-content{
+    margin-left: 250px;
+    min-height: 80vh;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-left: 250px;
+    z-index: 1000;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.25);
+}
+
+.content{
+    margin-top: calc(2rem + 40px);
+}
