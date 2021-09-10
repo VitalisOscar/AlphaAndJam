@@ -95,7 +95,7 @@ class User extends Authenticatable
     }
 
     function getNameAttribute(){
-        return $this->business['name'] ?? $this->operator_name;
+        return $this->business['name'];
     }
 
     function getOperatorNameAttribute(){

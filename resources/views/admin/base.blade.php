@@ -14,7 +14,9 @@ $current_route = \Illuminate\Support\Facades\Route::current()->getName();
     <div class="scroll-wrapper">
 
         <div class="sidebar-header bg-dark">
-            <a class="navbar-brand" href=""><strong class="text-white">{{ config('app.name') }}</strong></a>
+            <a class="navbar-brand d-inline-block mx-auto" href="{{ route('admin.dashboard') }}">
+                <img style="height: 50px" src="{{ asset('img/alphawhite.svg') }}" alt="{{ config('app.name') }}">
+            </a>
         </div>
 
         <div class="scroll-inner">

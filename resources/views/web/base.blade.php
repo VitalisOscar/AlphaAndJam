@@ -13,7 +13,7 @@ $user = auth()->user();
 
         <header class="navbar py-2 px-0 px-sm-3 section-shaped position-relative">
 
-            <div class="shape shape-light position-absolute top-0 bottom-0 right-0 left-0 bg-dark shape-style-1">
+            <div class="shape shape-light position-absolute top-0 bottom-0 right-0 left-0 bg-darker shape-style-1">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -30,7 +30,7 @@ $user = auth()->user();
                 </button>
 
                 <a href="{{ route('home') }}" class="navbar-brand mr-auto">
-                    {{ config('app.name') }}
+                    <img style="height: 50px" src="{{ asset('img/alphawhite.svg') }}" alt="{{ config('app.name') }}">
                 </a>
 
                 <div class="ml-auto d-flex align-items-center">
