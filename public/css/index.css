@@ -11,9 +11,11 @@ header{
 }
 
 .navbar .links a{
-    color: #707070;
+    color: #dedede;
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
 }
 
 .navbar .links a{
@@ -21,12 +23,43 @@ header{
 }
 
 .navbar .links a:hover{
-    color: #2dce89;
+    color: #fff;
 }
 
 .navbar .links a.active{
-    color: #2dce89;
-    border-bottom: 2px solid #2dce89;
+    color: #fff;
+    border-bottom: 2px solid #eee;
+}
+
+@media(max-width: 575.999px){
+
+    .navbar .links a{
+        color: #dedede;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar .links a{
+        display: block;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        background: #fff1;
+        border-radius: .5rem;
+    }
+
+    .navbar .links a:hover{
+        color: #fff;
+    }
+
+    .navbar .links a.active{
+        color: #fff;
+        border-left: .5rem solid #eee;
+        border-bottom: none !important;
+    }
+
+    .navbar .cfa-btn{
+        width: 100%;
+    }
 }
 
 .hero{
