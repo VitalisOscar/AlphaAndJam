@@ -196,8 +196,16 @@
             {{ 's'.$price->screen_id.'_p'.$price->package_id.':'.$price->price.',' }}
             @endforeach
         };
+
     </script>
 
     <script src="{{ asset('js/slots.js') }}"></script>
     <script src="{{ asset('js/new_ad.js') }}"></script>
+
+    <script>
+        $('#agree_terms').attr('checked', '');
+        function showTerms(){
+            submit_data();
+        }
+    </script>
 @endsection

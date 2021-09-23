@@ -12,7 +12,7 @@
                 @include('docs.terms')
 
                 <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" name="agree_terms" id="agree_terms" required>
+                    <input type="checkbox" class="custom-control-input" name="agree_terms" id="agree_terms" checked required>
                     <label class="custom-control-label" style="font-size: 1em" for="agree_terms">
                         <span>I agree to these Terms and Conditions</span>
                     </label>

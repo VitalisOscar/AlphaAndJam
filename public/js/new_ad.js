@@ -79,11 +79,12 @@ function goToContent(){
 }
 
 function showTerms(){
-    if(valid()){
-        $('#tac').modal({
-            backdrop: 'static'
-        });
-    }
+    submit_data();
+    // if(valid()){
+    //     $('#tac').modal({
+    //         backdrop: 'static'
+    //     });
+    // }
 }
 
 function submit_data(){
