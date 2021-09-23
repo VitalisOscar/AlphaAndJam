@@ -13,7 +13,7 @@ $user = auth()->user();
 
         <header class="navbar py-2 px-0 px-sm-3 section-shaped position-relative">
 
-            <div class="shape shape-light position-absolute top-0 bottom-0 right-0 left-0 bg-darker shape-style-1">
+            <div class="shape shape-light position-absolute top-0 bottom-0 right-0 left-0 bg-gradient-danger shape-style-1">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -30,7 +30,8 @@ $user = auth()->user();
                 </button>
 
                 <a href="{{ route('home') }}" class="navbar-brand mr-auto">
-                    <img style="height: 50px" src="{{ asset('img/alphawhite.svg') }}" alt="{{ config('app.name') }}">
+                    {{ config('app.name') }}
+                    {{-- <img style="height: 50px" src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}"> --}}
                 </a>
 
                 <div class="ml-auto d-flex align-items-center">
@@ -39,8 +40,8 @@ $user = auth()->user();
                             <a href="{{ route('web.user.dashboard') }}">Dashboard</a>
                             <a href="{{ route('web.presence') }}">View Presence</a>
                         </div>
-                        <a href="{{ route('web.user.invoices') }}" class="btn btn-outline-white shadow-none py-2"><i class="fa fa-dollar mr-1"></i>Your Invoices</a>
-                        <a href="{{ route('web.adverts.create') }}" class="btn btn-warning shadow-none py-2"><i class="fa fa-upload mr-1"></i>Upload an Ad</a>
+                        <a href="{{ route('web.user.invoices') }}" class="btn btn-white shadow-none py-2"><i class="fa fa-dollar mr-1"></i>Your Invoices</a>
+                        <a href="{{ route('web.adverts.create') }}" class="btn btn-default shadow-none py-2"><i class="fa fa-upload mr-1"></i>Upload an Ad</a>
                     </div>
 
                     <button class="navbar-toggler text-white d-md-none" onclick="$('#sidenav').toggleClass('open')">
@@ -83,6 +84,14 @@ $user = auth()->user();
                     <a href="{{ route('web.adverts.declined') }}" @if($current_name == 'web.adverts.declined') class="active"@endif ><i class="fa fa-times bg-danger"></i>Declined Ads</a>
                     <a href="{{ route('web.user.account') }}" @if($current_name == 'web.user.account') class="active"@endif ><i class="fa fa-user bg-indigo"></i>My Account</a>
                     <a href="{{ route('web.user.invoices') }}" @if($current_name == 'web.user.invoices') class="active"@endif ><i class="fa fa-money bg-warning"></i>My Invoices</a>
+                </div>
+
+                <hr class="my-3">
+
+                <div>
+                    <a href="https://oriscop.com" target="_blank">
+                        <img src="{{ asset('img/logo.png') }}" class="d-block mx-auto" style="max-width: 70px" alt="Oriscop">
+                    </a>
                 </div>
             </div>
         </aside>

@@ -18,7 +18,9 @@
 
     <div class="auth-card rounded border px-4 pt-4 pb-4 bg-white" style="width: 350px; max-width: 100%">
         <div class="text-center mb-3">
-            <img src="{{ asset('img/alphalogo.svg') }}" class="d-block mx-auto mb-4" height="60px" alt="">
+            <a href="{{ route('home') }}">
+                <img src="{{ asset('img/logo.png') }}" class="d-inline-block mx-auto mb-4" height="60px" alt="">
+            </a>
             <p class="mb-2">Reset your password, {{ $user->name }}</p>
             <span class="d-inline-block px-5 bg-dark rounded" style="height: 3px"></span>
         </div>
@@ -42,7 +44,7 @@
             </div>
 
             <div class="mb-4">
-                <button class="btn btn-dark shadow-none btn-block">Save Password</button>
+                <button class="btn btn-danger shadow-none btn-block">Save Password</button>
             </div>
 
             <div class="text-center" style="font-size: .9em">

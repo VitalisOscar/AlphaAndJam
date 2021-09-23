@@ -32,7 +32,9 @@
             <div class="mx-auto" style="width: 400px; max-width: 100%">
 
                 <div class="text-center mb-3">
-                    <img src="{{ asset('img/alphalogo.svg') }}" class="d-block mx-auto mb-4" height="60px" alt="">
+                    <a href="{{ route('home') }}">
+                        <img src="{{ asset('img/logo.png') }}" class="d-inline-block mx-auto mb-4" height="60px" alt="">
+                    </a>
                     <div class="mb-2 text-left">Hello <strong>{{ auth()->user()->operator_name }}</strong>, finish up with registration and start using our services</div>
                     <div>
                         <a href="{{ route('logout') }}" class="btn btn-block btn-outline-danger shadow-none py-2"><i class="fa fa-power-off mr-1"></i>Log Out</a>
@@ -119,7 +121,7 @@
 
                             <div class="col-12 text-center">
                                 <div class="mt-4">
-                                    <button class="btn btn-dark btn-block shadow-none" type="submit">Get Onboard</button>
+                                    <button class="btn btn-danger btn-block shadow-none" type="submit">Get Onboard</button>
                                 </div>
                             </div>
 

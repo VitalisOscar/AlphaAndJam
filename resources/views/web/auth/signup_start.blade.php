@@ -32,7 +32,9 @@
             <div class="mx-auto" style="width: 400px; max-width: 100%">
                 <div class="px-sm-4 mb-3 py-4 border bg-white rounded auth-card shadow-s">
                     <div class="text-center mb-3">
-                        <img src="{{ asset('img/alphalogo.svg') }}" class="d-block mx-auto mb-4" height="60px" alt="">
+                        <a href="{{ route('home') }}">
+                            <img src="{{ asset('img/logo.png') }}" class="d-inline-block mx-auto mb-4" height="60px" alt="">
+                        </a>
                         <p class="mb-2">Create your basic client profile</p>
                         <span class="d-inline-block px-5 bg-dark rounded" style="height: 3px"></span>
                     </div>
@@ -114,7 +116,7 @@
 
                             <div class="col-12 text-center">
                                 <div class="mt-4">
-                                    <button class="btn btn-dark shadow-none btn-block mb-4" type="submit">Submit</button>
+                                    <button class="btn btn-danger shadow-none btn-block mb-4" type="submit">Submit</button>
 
                                     <div class="position-relative">
                                         <div style="z-index: 0" class="position-absolute left-0 right-0 top-0 bottom-0 d-flex align-items-center">
@@ -131,7 +133,7 @@
                     </form>
 
                     <div class="mt-4">
-                        {{ config('app.name') }} is a service provided by <a href="https://magnate-ventures.com">Alpha and Jam</a>. All accounts will be verified before any content is submitted.
+                        Powered by <a href="https://oriscop.com">Oriscop Solutions</a>. All accounts will be verified before any content is submitted.
                         {{-- By signing up, you agree to our digital advertising <a class="text-primary">Terms and Conditions</a> --}}
                     </div>
                 </div>

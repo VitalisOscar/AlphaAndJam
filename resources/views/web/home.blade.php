@@ -14,17 +14,17 @@
     }
 </style>
 
-<header class="py-3 bg-dark sticky-top">
+<header class="py-3 bg-white shadow-sm sticky-top">
     <nav class="navbar py-0">
         <div class="container d-block d-sm-flex">
 
             <div class="d-flex align-items-center">
                 <a href="{{ route('home') }}" class="navbar-brand mr-auto">
-                    <img style="height: 50px" src="{{ asset('img/alphawhite.svg') }}" alt="{{ config('app.name') }}">
+                    <img style="height: 50px" src="{{ asset('img/logo.png') }}" alt="{{ config('app.name') }}">
                 </a>
 
-                <button class="navbar-toggler border d-sm-none" onclick="$('#menu').toggleClass('d-none'); $('.navbar-toggler i').toggleClass('fa-bars fa-times');">
-                    <i class="fa fa-bars text-white"></i>
+                <button class="navbar-toggler border border-danger d-sm-none" onclick="$('#menu').toggleClass('d-none'); $('.navbar-toggler i').toggleClass('fa-bars fa-times');">
+                    <i class="fa fa-bars"></i>
                 </button>
             </div>
 
@@ -34,7 +34,7 @@
                     <a href="{{ route('web.auth.login') }}">Log in</a>
                 </div>
 
-                <a class="btn btn-outline-white shadow-none btn-rounded cfa-btn" href="{{ route('web.auth.signup') }}">Get Started</a>
+                <a class="btn btn-outline-danger shadow-none btn-rounded cfa-btn" href="{{ route('web.auth.signup') }}">Get Started</a>
             </div>
         </div>
     </nav>
@@ -82,7 +82,7 @@
                 <div class="col-lg-6 d-flex align-items-center">
 
                      <div>
-                        <h1 class="hero-title"><span class="text-primary">Simple</span> Digital Outdoor <span class="text-dar">Advertising</span></h1>
+                        <h1 class="hero-title"><span class="text-danger">Simple</span> Digital Outdoor <span class="text-dar">Advertising</span></h1>
 
                         <p class="lead">
                             {{ config('app.name') }} has been built to enable your business and products gain more visibility through digital outdoor advertising.
@@ -90,8 +90,8 @@
                         </p>
 
                         <div>
-                            <a href="#about" class="mb-3 btn btn-lg btn-outline-primary shadow-none">Learn More</a>
-                            <a href="{{ route('web.auth.signup') }}" class="mb-3 btn btn-lg btn-default shadow-none">Get Started</a>
+                            <a href="#about" class="mb-3 btn btn-lg btn-outline-dark shadow-none">Learn More</a>
+                            <a href="{{ route('web.auth.signup') }}" class="mb-3 btn btn-lg btn-danger shadow-none">Get Started</a>
                         </div>
                      </div>
 
@@ -136,7 +136,7 @@
 
 
 <section id="hiw" class="py-5 section-shaped hiw">
-    <div class="shape shape-light bg-default shape-style-1">
+    <div class="shape shape-light bg-gradient-danger shape-style-1">
         <span class="span-200"></span>
         <span class="span-100"></span>
         <span class="span-150"></span>
@@ -221,7 +221,7 @@
                     </p>
 
                     <div class="position-absolute bottom-0 text-center left-0 right-0 pb-5">
-                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-default shadow-none btn-lg px-4 btn-rounded">Get Started</a>
+                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-danger shadow-none btn-lg px-4 btn-rounded">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -241,7 +241,7 @@
                     </p>
 
                     <div class="position-absolute bottom-0 text-center left-0 right-0 pb-5">
-                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-default shadow-none btn-lg px-4 btn-rounded">Get Started</a>
+                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-danger shadow-none btn-lg px-4 btn-rounded">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -261,7 +261,7 @@
                     </p>
 
                     <div class="position-absolute bottom-0 text-center left-0 right-0 pb-5">
-                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-default shadow-none btn-lg px-4 btn-rounded">Get Started</a>
+                        <a href="{{ route('web.auth.signup') }}" class="btn btn-outline-danger shadow-none btn-lg px-4 btn-rounded">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -310,7 +310,7 @@
 <footer class="py-3" style="background: #f2f5f8">
     <div class="container d-sm-flex align-items-sm-center">
         <div class="mb-3 mb-sm-0">
-            {{ config('app.name') }} is powered by <a href="https://alphaandjam.net" target="_blank">Alpha And Jam Limited</a>
+            Powered by Oriscop Solutions. &copy;2021 All Rights Reserved
         </div>
 
         <div class="ml-sm-auto">

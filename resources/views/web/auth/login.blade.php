@@ -19,7 +19,9 @@
     <div class="mx-auto" style="width: 350px; max-width: 100%">
         <div class="px-sm-4 mb-3 py-4 border bg-white rounded auth-card">
             <div class="text-center mb-3">
-                <img src="{{ asset('img/alphalogo.svg') }}" class="d-block mx-auto mb-4" height="60px" alt="">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('img/logo.png') }}" class="d-inline-block mx-auto mb-4" height="60px" alt="">
+                </a>
                 <p class="mb-2">Sign in to your client account</p>
                 <span class="d-inline-block px-5 bg-dark rounded" style="height: 3px"></span>
             </div>
@@ -51,7 +53,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <button class="btn btn-dark shadow-none btn-block">Log In</button>
+                    <button class="btn btn-danger shadow-none btn-block">Log In</button>
                 </div>
 
                 <div class="text-center" style="font-size: .9em">
@@ -67,7 +69,7 @@
         </div>
 
         <div class="text-center small">
-            Powered by <a href="https://magnate-ventures.com">Alpha and Jam</a>. All rights reserved.
+            Powered by <a href="https://oriscop.com">Oriscop Solutions</a>. All rights reserved.
         </div>
     </div>
 
