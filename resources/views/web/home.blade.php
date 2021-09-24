@@ -31,7 +31,8 @@
             <div class="py-3 py-sm-0 float-sm-right d-none d-sm-flex align-items-center" id="menu">
                 <div class="links pt-3 pb-2 pt-sm-0 pb-sm-0">
                     <a href="{{ route('web.auth.login') }}" class="active">Home</a>
-                    <a href="{{ route('web.auth.login') }}">Log in</a>
+                    <a href="{{ route('admin.dashboard') }}">Admin</a>
+                    <a href="{{ route('web.auth.login') }}">Client Log in</a>
                 </div>
 
                 <a class="btn btn-outline-danger shadow-none btn-rounded cfa-btn" href="{{ route('web.auth.signup') }}">Get Started</a>

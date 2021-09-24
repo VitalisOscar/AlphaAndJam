@@ -72,7 +72,7 @@ class PasswordResetController extends Controller
 
         // POST
         $validator = Validator::make($request->post(), [
-            'new_password' => ['required', 'regex:/([a-zA-Z]){8,}/'],
+            'new_password' => ['required'],
             'confirm_password' => ['required', 'same:new_password'],
         ], [
             'new_password.regex' => 'Password should contain at least 8 characters with at least one letter',
