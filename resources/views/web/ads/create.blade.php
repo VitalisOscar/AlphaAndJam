@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="col-12 pt-3 border-top text-right">
-                    <button type="button" onclick="goToSlots()" class="btn btn-default shadow-none">Book Slots&nbsp;<i class="fa fa-angle-double-right"></i></button>
+                    <button type="button" onclick="goToSlots()" class="btn btn-default shadow-none">Next&nbsp;<i class="fa fa-angle-double-right"></i></button>
                 </div>
             </div>
         </div>

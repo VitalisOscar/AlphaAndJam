@@ -27,7 +27,7 @@
                         </ul>
 
                         <div class="form-group">
-                            <h6 class="mb-0"><strong>Screen:</strong></h6>
+                            <h6 class="mb-0"><strong>Choose Screen:</strong></h6>
                             <div class="mb-1" style="font-size: .9em">This is the preferred screen where the ad shall be shown</div>
                             <div class="clearfix">
                                 <select class="nice-select w-100" onchange="updateWithStoredSlots(); $(this).attr('data-screen', ($('#screen_id').children().get(this.selectedIndex).getAttribute('data-screen')))" name="screen_id" data-screen="{{ isset($screens[0]) ? $screens[0]->title:null }}" id="screen_id">
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <h6 class="mb-0"><strong>Package:</strong></h6>
+                            <h6 class="mb-0"><strong>Choose Time Package:</strong></h6>
                             <div class="mb-1" style="font-size: .9em">Select the time of the day to air your ad. The package will also determine the pricing of your ad</div>
                             <div class="clearfix">
                                 <select name="package_id" class="nice-select w-100" onchange="updateWithStoredSlots(); $(this).attr('data-package', ($('#package').children().get(this.selectedIndex).getAttribute('data-package')))" id="package" data-package="{{ isset($packages[0]) ? $packages[0]->name.' ('.$packages[0]->summary.')':null }}" data-init-package="{{ isset($packages[0]) ? $packages[0]->name.' ('.$packages[0]->summary:null }}">
@@ -58,7 +58,7 @@
                     </div>
 
                     <div class="col-md-6 col-lg-4">
-
+                        <h6 class="mb-0"><strong>Select Dates:</strong></h6>
                         <input type="hidden" style="display:none" id="slot_datepicker">
 
                     </div>

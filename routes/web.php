@@ -16,6 +16,8 @@ use App\Http\Controllers\User\Payments\PesapalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::view('react-app/{path?}', 'react_app')->where('path', '.+');
+
 Route::view('/', 'web.home')->name('home');
 
 Route::get('logout', function () {
