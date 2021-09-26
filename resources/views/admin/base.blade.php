@@ -13,10 +13,12 @@ $current_route = \Illuminate\Support\Facades\Route::current()->getName();
 <aside class="sidebar">
     <div class="scroll-wrapper">
 
-        <div class="sidebar-header bg-dark">
-            <a class="navbar-brand d-inline-block mx-auto" href="{{ route('admin.dashboard') }}">
-                <img style="height: 50px" src="{{ asset('img/alphawhite.svg') }}" alt="{{ config('app.name') }}">
-            </a>
+        <div class="sidebar-header bg-gradient-danger shadow-sm">
+            <h4 class="d-block mb-0 mx-auto">
+                <a class="font-weight-800 text-white" style="color: #fff !important" href="{{ route('admin.dashboard') }}">
+                    {{ config('app.name') }}
+                </a>
+            </h4>
         </div>
 
         <div class="scroll-inner">
@@ -157,7 +159,7 @@ $current_route = \Illuminate\Support\Facades\Route::current()->getName();
 </aside>
 
 <main class="main-content">
-    <nav class="header bg-default">
+    <nav class="header bg-gradient-danger">
 
         <style>
             .page-heading, .page-heading i{ color: #fff !important; }
