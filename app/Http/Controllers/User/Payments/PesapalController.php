@@ -90,7 +90,7 @@ class PesapalController extends Controller
         $merchant_reference = $request->get('pesapal_merchant_reference');
 
         // reference is payment id
-        $pesapal_payment = PesapalPayment::where('payment_id', $merchant_reference)->first();
+        $pesapal_payment = PesapalPayment::where('id', $merchant_reference)->first();
 
         // $pesapal_notification_type= $request->input('pesapal_notification_type');
 
