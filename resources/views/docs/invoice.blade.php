@@ -72,7 +72,7 @@
                             <div>
                                 <strong>
                                 @if($invoice->isPaid())
-                                <span class="text-success">PAID</span> - {{ \App\Models\Payment::METHODS[strtolower($invoice->payment->method)].($invoice->payment->code != null ? ' ('.$invoice->payment->code.')':'') }}
+                                <span class="text-success">PAID</span> - {{ (\App\Models\Payment::METHODS[strtolower($invoice->payment->method)] ?? $invoice->payment->method).($invoice->payment->code != null ? ' ('.$invoice->payment->code.')':'') }}
                                 @elseif($invoice->isUnpaid())
                                 <span class="text-danger">UNPAID</span>
                                 @else
