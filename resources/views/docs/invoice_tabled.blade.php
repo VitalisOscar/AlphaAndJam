@@ -44,16 +44,16 @@
         <tr>
             <td>
                 <div class="mr-4">
-                    <img src="{{ asset('img/alphalogo.png') }}" style="height: 110px">
+                    <img src="{{ asset('img/logo.png') }}" style="height: 110px">
                 </div>
             </td>
 
             <td>
                 <div>
-                    <h3 class="font-weight-600" style="line-height: 1.2">Alpha and Jam Limited</h3>
-                    <div>The Mirage, Chiromo road, Nairobi</div>
-                    <div><strong>Email:&nbsp;</strong>info@alphaandjam.net</div>
-                    <div><strong>Tel:&nbsp;</strong>0704 607 893</div>
+                    <h3 class="font-weight-600" style="line-height: 1.2">Oriscop Solutions</h3>
+                    <div>Imara Daima, Mombasa road, Nairobi</div>
+                    <div><strong>Email:&nbsp;</strong>info@oriscop.com</div>
+                    <div><strong>Tel:&nbsp;</strong>0710 338 211</div>
                 </div>
             </td>
         </tr>
