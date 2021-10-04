@@ -11,4 +11,8 @@ class PesapalPayment extends Model
     ];
 
     public $timestamps = false;
+
+    function payment(){
+        return $this->belongsTo(Payment::class);
+    }
 }

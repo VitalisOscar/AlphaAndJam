@@ -86,8 +86,8 @@ class PesapalController extends Controller
     }
 
     function ipn(Request $request){
-        $trackingid = $request->input('pesapal_transaction_tracking_id');
-        $merchant_reference = $request->input('pesapal_merchant_reference');
+        $trackingid = $request->get('pesapal_transaction_tracking_id');
+        $merchant_reference = $request->get('pesapal_merchant_reference');
 
         // reference is payment id
         $pesapal_payment = PesapalPayment::where('payment_id', $merchant_reference)->first();
@@ -96,7 +96,7 @@ class PesapalController extends Controller
 
         $status = Pesapal::getMerchantStatus($merchant_reference);
 
-        $payment = Payment::where('id',$$merchant_reference)->first();
+        $payment = $pesapal_payment->payment;
         $payment->status = $status;
         $payment->save();
 
