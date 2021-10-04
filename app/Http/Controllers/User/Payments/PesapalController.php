@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\PesapalPayment;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Knox\Pesapal\Facades\Pesapal;
@@ -86,11 +87,11 @@ class PesapalController extends Controller
     }
 
     function ipn(Request $request){
-        $trackingid = $request->get('pesapal_transaction_tracking_id');
+        $tracking_id = $request->get('pesapal_transaction_tracking_id');
         $merchant_reference = $request->get('pesapal_merchant_reference');
 
         // reference is payment id
-        $pesapal_payment = PesapalPayment::where('id', $merchant_reference)->first();
+        $pesapal_payment = PesapalPayment::where('tracking_id', $tracking_id)->first();
 
         // $pesapal_notification_type= $request->input('pesapal_notification_type');
 
