@@ -23,7 +23,7 @@ class PesapalController extends Controller
         }
 
         if($invoice->isPending()){
-            return $this->json->error("There's already another pending payment for this invoice. Please wait a while and try again");
+            // return $this->json->error("There's already another pending payment for this invoice. Please wait a while and try again");
         }
 
         $user = auth('web')->user();

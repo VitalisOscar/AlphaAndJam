@@ -26,11 +26,16 @@ Route::get('logout', function () {
 })->name('logout');
 
 // Payments
-Route::post('checkout/{invoice_number}', [MpesaPaymentController::class, 'initiate'])->name('web.mpesa.checkout');
+// mpesa
+// Route::post('checkout/{invoice_number}', [MpesaPaymentController::class, 'initiate'])->name('web.mpesa.checkout');
 Route::any('mpesa/hook', [MpesaPaymentController::class, 'hook'])->name('web.mpesa.hook');
 
+// Route::any('checkout/{invoice_number}', function($invoice_number){
+//     return redirect()->route('web.pesapal.make', $invoice_number);
+// })->name('web.mpesa.checkout');
+
 Route::prefix('pesapal')->group(function(){
-    Route::post('checkout/{invoice_number}', [PesapalController::class, 'make'])->middleware('auth:web')->name('web.pesapal.make');
+    Route::get('checkout/{invoice_number}', [PesapalController::class, 'make'])->middleware('auth:web')->name('web.pesapal.make');
     Route::get('received', [PesapalController::class, 'received'])->name('web.pesapal.received');
     Route::get('ipn', [PesapalController::class, 'ipn'])->name('web.pesapal.ipn');
 });
@@ -82,8 +87,12 @@ Route::prefix('account')->group(function(){
         Route::get('invoices/{invoice_number}', [InvoicesController::class, 'getSingle'])->name('web.user.invoices.single');
 
         // Invoice payment
-        Route::get('invoices/{invoice_number}/payment', [InvoicesController::class, 'payment'])->name('web.user.invoices.single.payment');
+        // Route::get('invoices/{invoice_number}/payment', [InvoicesController::class, 'payment'])->name('web.user.invoices.single.payment');
         Route::post('invoices/{invoice_number}/payment/mpesa', [MpesaPaymentController::class, 'initiate'])->name('web.user.invoices.single.payment.mpesa');
+
+        Route::get('invoices/{invoice_number}/payment', function($invoice_number){
+            return redirect()->route('web.pesapal.make', $invoice_number);
+        })->name('web.user.invoices.single.payment');
 
         Route::get('invoices/{invoice_number}/download', [InvoicesController::class, 'download'])->name('web.user.invoices.single.download');
     });

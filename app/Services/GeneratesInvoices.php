@@ -33,7 +33,7 @@ trait GeneratesInvoices{
 
         if($client->canPayLater()){
             // Get the limit
-            $limit = $client->payment['limit'];
+            $limit = $client->payment['post_pay_limit'];
             $earliest->addDays($limit)->toDateTimeString();
         }
 
