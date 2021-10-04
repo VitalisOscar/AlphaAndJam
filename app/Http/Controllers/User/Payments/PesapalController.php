@@ -73,11 +73,11 @@ class PesapalController extends Controller
     }
 
     function received(Request $request){
-        $tracking_id = $request->input('tracking_id');
-        $reference = $request->input('merchant_reference');
+        $tracking_id = $request->get('tracking_id');
+        $reference = $request->get('merchant_reference');
 
         // reference is payment id
-        $pesapal_payment = PesapalPayment::where('payment_id', $reference)->first();
+        $pesapal_payment = PesapalPayment::where('id', $reference)->first();
         $pesapal_payment->tracking_id = $tracking_id;
 
         $pesapal_payment->save();
