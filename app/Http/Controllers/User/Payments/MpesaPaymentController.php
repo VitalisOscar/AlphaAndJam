@@ -53,11 +53,11 @@ class MpesaPaymentController extends Controller
                 back()->withInput()->withErrors(['status' => 'The invoice has already been paid for']);
         }
 
-        if($invoice->isPending()){
-            return $request->expectsJson() ?
-                $this->json->error("There's already another pending payment for this invoice. Please wait a while and try again"):
-                back()->withInput()->withErrors(['status' => "There's already another pending payment for this invoice. Please wait a while and try again"]);
-        }
+        // if($invoice->isPending()){
+        //     return $request->expectsJson() ?
+        //         $this->json->error("There's already another pending payment for this invoice. Please wait a while and try again"):
+        //         back()->withInput()->withErrors(['status' => "There's already another pending payment for this invoice. Please wait a while and try again"]);
+        // }
 
         // Phone number to 2547...
         $phone = substr_replace($phone, "254", 0, 1);
