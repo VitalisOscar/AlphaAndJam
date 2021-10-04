@@ -12,7 +12,6 @@ use App\Services\PaymentService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use SmoDav\Mpesa\Laravel\Facades\STK;
 
@@ -69,7 +68,7 @@ class MpesaPaymentController extends Controller
             $response = STK::push(intval($price), $phone, $invoice_number, config('app.name'));
 
             if (!property_exists($response, 'ResponseCode') || intval($response->ResponseCode) != 0) {
-                Storage::put('mpesa/errors/initiate', json_encode($response).' '.$price);
+                // Storage::put('mpesa/errors/initiate', json_encode($response).' '.$price);
                 return $request->expectsJson() ?
                     $this->json->error('Something went wrong. Please try again'):
                     back()->withInput()->withErrors(['status' => 'Something went wrong. Please try again']);
@@ -113,11 +112,10 @@ class MpesaPaymentController extends Controller
     function hook(Request $request){
         $response = $request->post('Body');
         $callback = $response['stkCallback'];
-
         $merchant_request_id = $callback['MerchantRequestID'] ?? null;
         $checkout_request_id = $callback['CheckoutRequestID'] ?? null;
 
-        Storage::put('mpesa/responses/cri_'.$checkout_request_id, \json_encode($response));
+        // Storage::put('mpesa/responses/cri_'.$checkout_request_id, \json_encode($response));
 
         // If paid for already, payment will be rejected
 
@@ -129,7 +127,6 @@ class MpesaPaymentController extends Controller
         // Get the invoice and last payment
         $invoice = $mpesa_payment->invoice;
         $last_payment = $invoice->payment;
-
         // set status as failed or successful
         if($callback['ResultCode'] == '0'){
             // For the payment
