@@ -93,7 +93,7 @@ class PesapalController extends Controller
         // reference is payment id
         $pesapal_payment = PesapalPayment::where('tracking_id', $tracking_id)->first();
 
-        // $pesapal_notification_type= $request->input('pesapal_notification_type');
+        $pesapal_notification_type= $request->input('pesapal_notification_type');
 
         $status = Pesapal::getMerchantStatus($merchant_reference);
 
@@ -101,7 +101,7 @@ class PesapalController extends Controller
         $payment->status = $status;
         $payment->save();
 
-        return "success";
+        return "pesapal_notification_type=$pesapal_notification_type&pesapal_transaction_tracking_id=$tracking_id&pesapal_merchant_reference=$merchant_reference";
     }
 
 }
