@@ -15,7 +15,7 @@
                         This ad has been approved. It will be aired on the booked dates and times
 
                         @if($advert->invoice->isUnpaid())
-                        <form action="{{ route('web.user.invoices.single.payment', $ad->invoice->number) }}" method="get" class="d-block mt-2 text-right">
+                        <form action="{{ route('web.user.invoices.single.payment', $advert->invoice->number) }}" method="get" class="d-block mt-2 text-right">
                             <button class="btn btn-default btn-sm"><i class="ni ni-money-coins mr-1"></i>Complete Payment</button>
                         </form>
                         @endif
