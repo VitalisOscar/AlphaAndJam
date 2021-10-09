@@ -11,7 +11,7 @@
         <div>
             <a href="{{ route('web.user.invoices.single.download', $invoice->number) }}" class="btn btn-default shadow-none mb-3 btn-block"><i class="fa fa-download mr-1"></i>Download Invoice</a>
             @if($invoice->isUnpaid())
-            <form action="{{ route('web.user.invoices.single.payment', $invoice->number) }}" method="get" class="d-block mb-3">
+            <form action="{{ config('web.pesapal.make', $invoice->number) }}" method="get" class="d-block mb-3">
                 <button class="btn btn-primary shadow-none btn-block"><i class="fa fa-credit-card mr-1"></i>Pay Online</button>
             </form>
             {{-- <button class="btn btn-primary shadow-none btn-block" data-toggle="modal" data-target="#payment_instructions"><i class="fa fa-credit-card mr-1"></i>Payment</button> --}}
@@ -38,10 +38,7 @@
             <h4 class="font-weight-600">Actions</h4>
             <a href="{{ route('web.user.invoices.single.download', $invoice->number) }}" class="btn btn-default shadow-none mb-3 btn-block"><i class="fa fa-print mr-1"></i>Download/Print</a>
             @if($invoice->isUnpaid())
-            <form action="{{ config('app.url').'/pesapal/iframe' }}" method="post" class="d-block mb-3">
-                @foreach ($pesapal->details as $key=>$val)
-                <input type="hidden" name="{{ $key }}" value="{{ $val }}" />
-                @endforeach
+            <form action="{{ config('web.pesapal.make', $invoice->number) }}" method="get" class="d-block mb-3">
                 <button class="btn btn-primary shadow-none btn-block"><i class="fa fa-credit-card mr-1"></i>Pay Online</button>
             </form>
             {{-- <button class="btn btn-primary shadow-none btn-block" data-toggle="modal" data-target="#payment_instructions"><i class="fa fa-credit-card mr-1"></i>Payment</button> --}}
