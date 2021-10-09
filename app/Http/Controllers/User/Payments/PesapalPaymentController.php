@@ -7,10 +7,13 @@ use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\PesapalPayment;
 use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Request as Psr7Request;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Route;
 use Knox\Pesapal\Facades\Pesapal;
 
 class PesapalPaymentController extends Controller
@@ -63,9 +66,9 @@ class PesapalPaymentController extends Controller
             $url .= "&{$key}={$value}";
         }
 
-        return redirect($url);
+        $iframe = Http::post(config('app.url').'/pesapal/iframe/', $details);
 
-        // return view('payments.pesapal.iframe', compact('iframe'));
+        return view('payments.pesapal.iframe', compact('iframe'));
     }
 
     function callback(Request $request){
