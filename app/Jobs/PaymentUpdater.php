@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\Invoice;
 use App\Models\Payment;
 use Bryceandy\Laravel_Pesapal\Facades\Pesapal;
+use Bryceandy\Laravel_Pesapal\Payment as Laravel_PesapalPayment;
 use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -40,14 +41,18 @@ class PaymentUpdater implements ShouldQueue
 
         foreach($payments as $payment){
             try{
-                // $transaction = Pesapal::getTransactionDetails(
-                //     $payment->id, $payment->latest_pesapal_payment->tracking_id
-                // );
+                $pp = DB::table('pesapal_payments')
+                    ->where('reference', $payment->id)
+                    ->first();
 
-                // Laravel_PesapalPayment::modify($transaction);
-                // $status = $transaction['status'];
+                $transaction = Pesapal::getTransactionDetails(
+                    $payment->id, $pp->tracking_id
+                );
 
-                $status = Pesapal::statusByMerchantRef($payment->id);
+                Laravel_PesapalPayment::modify($transaction);
+                $status = $transaction['status'];
+
+                // $status = Pesapal::statusByMerchantRef($payment->id);
 
                 $payment->status = $status;
 
