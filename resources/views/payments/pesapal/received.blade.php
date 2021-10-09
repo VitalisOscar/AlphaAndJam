@@ -1,5 +1,3 @@
-Payment status is {{ $status }}
-
 @extends('web.base')
 
 @section('title', 'Payment Received')
