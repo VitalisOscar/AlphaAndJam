@@ -59,8 +59,6 @@ class PesapalPaymentController extends Controller
 
         $url = 'pesapal/iframe?p=';
 
-        $params = "";
-
         foreach($details as $key=>$value){
             $url .= "&{$key}={$value}";
         }

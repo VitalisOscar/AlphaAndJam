@@ -1,37 +1,50 @@
 <?php
 
 return [
-    /*
-     * Pesapal consumer key
-     */
-    'consumer_key'    => 'fnagRv9mSk7Eo19Fo09P+z9XhDjZks06',
 
     /*
-     * Pesapal consumer secret
-     */
-    'consumer_secret' => 'Rb64fJ/ORux0EFXtbs7RZUfAZFo=',
+    |--------------------------------------------------------------------------
+    | Pesapal Consumer Key
+    |--------------------------------------------------------------------------
+    |
+    | The key obtained after creating your PesaPal demo or live account
+    | When committing this to a repository, remove the default value
+    | and put it into your online PESAPAL_KEY config variable
+    |
+    */
+    'consumer_key' => env('PESAPAL_KEY'),
 
     /*
-     * ISO code for the currency
-     */
-    'currency'        => env('PESAPAL_CURRENCY', 'KES'),
+   |--------------------------------------------------------------------------
+   | Pesapal Consumer Secret
+   |--------------------------------------------------------------------------
+   |
+   | The secret key obtained after creating your PesaPal demo or live account
+   | When committing this to a repository, remove the default value and
+   | put it into your online PESAPAL_SECRET configuration variable
+   |
+   */
+    'consumer_secret' => env('PESAPAL_SECRET'),
 
     /*
-     * controller method to call for instant notifications IPN as relative path from App\Http\Controllers\
-     * eg "TransactionController@confirmation"
-     */
-    'ipn'             => config('app.url').'/pesapal/ipn',
+   |--------------------------------------------------------------------------
+   | Pesapal Account Type
+   |--------------------------------------------------------------------------
+   |
+   | true if your account was obtained from https://www.pesapal.com and
+   | false if your account was obtained from https://demo.pesapal.com
+   |
+   */
+    'is_live' => env('PESAPAL_IS_LIVE', false),
 
     /*
-     * Pesapal environment
-     */
-    'live'            => env('PESAPAL_LIVE', false),
-
-    /*
-     * Route name to handle the callback
-     * eg Route::get('donepayment', ['as' => 'paymentsuccess', 'uses'=>'PaymentsController@paymentsuccess']);
-     * The route name is "paymentsuccess"
-     */
-    'callback_route'  => env('PESAPAL_CALLBACK_ROUTE'),
-
+   |--------------------------------------------------------------------------
+   | Callback URL
+   |--------------------------------------------------------------------------
+   |
+   | This is the full url pointing to the page that the iframe
+   | redirects to after processing the order on pesapal.com
+   |
+   */
+    'callback_url' => env('PESAPAL_CALLBACK_URL'),
 ];
