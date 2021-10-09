@@ -41,13 +41,14 @@ class PaymentUpdater implements ShouldQueue
 
         foreach($payments as $payment){
             try{
-                $transaction = Pesapal::getTransactionDetails(
-                    $payment->id, $payment->latest_pesapal_payment->tracking_id
-                );
+                // $transaction = Pesapal::getTransactionDetails(
+                //     $payment->id, $payment->latest_pesapal_payment->tracking_id
+                // );
 
-                Laravel_PesapalPayment::modify($transaction);
+                // Laravel_PesapalPayment::modify($transaction);
+                // $status = $transaction['status'];
 
-                $status = $transaction['status'];
+                $status = Laravel_PesapalPayment::statusByMerchantRef($payment->id);
 
                 $payment->status = $status;
 
