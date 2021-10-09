@@ -104,7 +104,9 @@ class PesapalPaymentController extends Controller
 
         $status = $transaction['status'];
 
-        $payment = PaymentModel::where('invoice_id', request('pesapal_merchant_reference'))->first();
+        $payment = PaymentModel::where('invoice_id', request('pesapal_merchant_reference'))
+            ->latest('time')
+            ->first();
 
         if(!$payment){
             $payment = new PaymentModel([
@@ -116,6 +118,9 @@ class PesapalPaymentController extends Controller
         }
 
         $payment->status = $status;
+        $payment->method = 'Pesapal';
+        $payment->generated = 'system';
+
         $payment->save();
         // also $status = Pesapal::statusByTrackingIdAndMerchantRef(request('pesapal_merchant_reference'), request('pesapal_transaction_tracking_id'));
         // also $status = Pesapal::statusByMerchantRef(request('pesapal_merchant_reference'));
