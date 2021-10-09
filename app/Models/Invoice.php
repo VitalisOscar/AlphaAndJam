@@ -39,6 +39,11 @@ class Invoice extends Model
         return $this->hasOne(Payment::class, 'invoice_id', 'id')->orderBy('time', 'desc');
     }
 
+    function payments()
+    {
+        return $this->hasMany(Payment::class, 'invoice_id', 'id');
+    }
+
     function scopePostPay($q){
         $q->whereHas('advert', function($q){
             $q->whereHas('user', function($q1){
@@ -81,11 +86,14 @@ class Invoice extends Model
     }
 
     function getStatusAttribute(){
-        $payment = $this->getAttribute('payment');
+        $payments = $this->payments()->successful()->get();
 
-        if($payment == null) return self::STATUS_UNPAID;
-        if($payment->status == Payment::STATUS_SUCCESSFUL) return self::STATUS_PAID;
-        if($payment->status == Payment::STATUS_PENDING) return self::STATUS_PENDING;
+        if(count($payments) > 0) return self::STATUS_PAID;
+
+        $pending_payments = $this->payments()->pending()->get();
+
+        if(count($pending_payments) > 0) return self::STATUS_PENDING;
+        
         return self::STATUS_UNPAID;
     }
 
