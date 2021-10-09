@@ -61,4 +61,8 @@ class Payment extends Model
     function scopePending($q){
         $q->where('status', self::STATUS_PENDING);
     }
+
+    function scopeSuccessful($q){
+        $q->where('status', self::STATUS_SUCCESSFUL);
+    }
 }
