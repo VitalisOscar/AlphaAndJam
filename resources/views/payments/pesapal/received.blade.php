@@ -1,0 +1,2 @@
+Payment status is {{ $status }}
+

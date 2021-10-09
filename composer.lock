@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4d7c52a703baaf1ea838acc448308e0",
+    "content-hash": "191ee0407546fe48aefe52a1ae49a148",
     "packages": [
         {
             "name": "africastalking/africastalking",
@@ -239,6 +239,57 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "bryceandy/laravel_pesapal",
+            "version": "v2.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bryceandy/laravel_pesapal.git",
+                "reference": "748082bec444d9f7bf44face0bc90353a5589c13"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bryceandy/laravel_pesapal/zipball/748082bec444d9f7bf44face0bc90353a5589c13",
+                "reference": "748082bec444d9f7bf44face0bc90353a5589c13",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bryceandy\\Laravel_Pesapal\\PesapalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bryceandy\\Laravel_Pesapal\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "bryceandy",
+                    "email": "hello@bryceandy.com"
+                }
+            ],
+            "description": "An unofficial Pesapal API integration for Laravel. Multiple payment options including but not limited to M-Pesa, Tigo Pesa, Visa, Mastercard, American Express in Kenya, Tanzania & Uganda.",
+            "support": {
+                "issues": "https://github.com/bryceandy/laravel_pesapal/issues",
+                "source": "https://github.com/bryceandy/laravel_pesapal/tree/v2.0.9"
+            },
+            "time": "2021-07-13T13:09:24+00:00"
         },
         {
             "name": "composer/package-versions-deprecated",

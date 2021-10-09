@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Payments\PesapalIpnController;
 use App\Http\Controllers\User\Account\InvoicesController;
 use App\Http\Controllers\User\Account\UserAccountController;
 use App\Http\Controllers\User\Account\VerifyEmailController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\User\Auth\PasswordResetController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\Payments\MpesaPaymentController;
 use App\Http\Controllers\User\Payments\PesapalController;
+use App\Http\Controllers\User\Payments\PesapalPaymentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +37,9 @@ Route::any('mpesa/hook', [MpesaPaymentController::class, 'hook'])->name('web.mpe
 // })->name('web.mpesa.checkout');
 
 Route::prefix('pesapal')->group(function(){
-    Route::get('checkout/{invoice_number}', [PesapalController::class, 'make'])->middleware('auth:web')->name('web.pesapal.make');
-    Route::get('received', [PesapalController::class, 'received'])->name('web.pesapal.received');
-    Route::get('ipn', [PesapalController::class, 'ipn'])->name('web.pesapal.ipn');
+    Route::get('checkout/{invoice_number}', PesapalPaymentController::class)->middleware('auth:web')->name('web.pesapal.make');
+    Route::get('received', [PesapalPaymentController::class, 'callback'])->name('web.pesapal.received');
+    Route::get('ipn', [PesapalIpnController::class, 'index'])->name('web.pesapal.ipn');
 });
 
 Route::get('terms', function(){
