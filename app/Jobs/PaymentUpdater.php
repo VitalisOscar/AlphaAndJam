@@ -42,11 +42,11 @@ class PaymentUpdater implements ShouldQueue
         foreach($payments as $payment){
             try{
                 $pp = DB::table('pesapal_payments')
-                    ->where('reference', $payment->id)
+                    ->where('reference', $payment->invoice_id)
                     ->first();
 
                 $transaction = Pesapal::getTransactionDetails(
-                    $payment->id, $pp->tracking_id
+                    $payment->invoice_id, $pp->tracking_id
                 );
 
                 Laravel_PesapalPayment::modify($transaction);
