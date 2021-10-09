@@ -74,7 +74,6 @@ class PesapalPaymentController extends Controller
             // 'amount' => number_format($invoice->totals['total'], 2),
             'amount' => number_format(1, 2),
             'description' => 'Invoice Payment',
-            'type' => 'MERCHANT',
             'first_name' => $user->name,
             'last_name' => '',
             'email' => $user->email,
@@ -86,7 +85,9 @@ class PesapalPaymentController extends Controller
 
         Payment::create($details);
 
-        $iframe_src = Pesapal::getIframeSource($details);
+        $iframe_src = Pesapal::getIframeSource(array_merge($details, [
+            'type' => 'MERCHANT',
+        ]));
 
         return view('payments.pesapal.iframe', compact('iframe_src'));
 
