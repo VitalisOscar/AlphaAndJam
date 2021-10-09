@@ -30,11 +30,11 @@ class Payment extends Model
     ];
 
     function pesapal_payments(){
-        return $this->hasMany(Laravel_PesapalPayment::class, 'reference');
+        return $this->hasMany(Laravel_PesapalPayment::class, 'reference', 'id');
     }
 
     function latest_pesapal_payments(){
-        return $this->hasOne(Laravel_PesapalPayment::class, 'reference')->latest();
+        return $this->hasOne(Laravel_PesapalPayment::class, 'reference', 'id')->latest();
     }
 
     function invoice(){
@@ -55,5 +55,10 @@ class Payment extends Model
 
     function isPending(){
         return $this->status == self::STATUS_PENDING;
+    }
+
+
+    function scopePending($q){
+        $q->where('status', self::STATUS_PENDING);
     }
 }
