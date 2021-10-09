@@ -10,7 +10,7 @@
     <div class="col-12 d-sm-none actions mb-4">
         <div>
             <a href="{{ route('web.user.invoices.single.download', $invoice->number) }}" class="btn btn-default shadow-none mb-3 btn-block"><i class="fa fa-download mr-1"></i>Download Invoice</a>
-            @if($invoice->isUnpaid())
+            @if($invoice->isUnpaid() && !$invoice->isPending())
             <form action="{{ config('web.pesapal.make', $invoice->number) }}" method="get" class="d-block mb-3">
                 <button class="btn btn-primary shadow-none btn-block"><i class="fa fa-credit-card mr-1"></i>Pay Online</button>
             </form>
@@ -37,7 +37,7 @@
         <div>
             <h4 class="font-weight-600">Actions</h4>
             <a href="{{ route('web.user.invoices.single.download', $invoice->number) }}" class="btn btn-default shadow-none mb-3 btn-block"><i class="fa fa-print mr-1"></i>Download/Print</a>
-            @if($invoice->isUnpaid())
+            @if($invoice->isUnpaid() && !$invoice->isPending())
             <form action="{{ route('web.pesapal.make', $invoice->number) }}" method="get" class="d-block mb-3">
                 <button class="btn btn-primary shadow-none btn-block"><i class="fa fa-credit-card mr-1"></i>Pay Online</button>
             </form>
@@ -124,8 +124,6 @@
     </style>
 
 </div>
-
-@include('web.user._pay_dialog')
 
 @endsection
 
