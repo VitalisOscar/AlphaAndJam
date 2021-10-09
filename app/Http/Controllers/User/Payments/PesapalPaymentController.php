@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Invoice;
 use App\Models\Payment;
 use App\Models\PesapalPayment;
+use GuzzleHttp\Client;
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -37,22 +39,9 @@ class PesapalPaymentController extends Controller
             'status' => Payment::STATUS_PENDING
         ]);
 
-        DB::beginTransaction();
         if(!$payment->save()){
             return back()->withErrors('Unable to initiate payment. Something went wrong');
         }
-
-        $pesapal_payment = new PesapalPayment([
-            'payment_id' => $payment->id,
-            'status' => 'pending'
-        ]);
-
-        if(!$pesapal_payment->save()){
-            DB::rollback();
-            return back()->withErrors('Unable to initiate payment. Something went wrong');
-        }
-
-        DB::commit();
 
         // get iframe
         $details = array(
@@ -63,14 +52,22 @@ class PesapalPaymentController extends Controller
             'first_name' => $user->name,
             'last_name' => '',
             'email' => $user->email,
-            'phonenumber' => $user->phone,
-            'reference' => $pesapal_payment->id,
+            'phone_number' => $user->phone,
+            'reference' => $payment->id,
             'currency' => 'KES'
         );
 
-        $iframe = Pesapal::makePayment($details);
+        $url = 'pesapal/iframe?p=';
 
-        return view('payments.pesapal.iframe', compact('iframe'));
+        $params = "";
+
+        foreach($details as $key=>$value){
+            $url .= "&{$key}={$value}";
+        }
+
+        return redirect($url);
+
+        // return view('payments.pesapal.iframe', compact('iframe'));
     }
 
     function callback(Request $request){
