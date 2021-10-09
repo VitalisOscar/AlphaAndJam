@@ -56,8 +56,8 @@ class PesapalController extends Controller
 
         // get iframe
         $details = array(
-            'amount' => number_format($invoice->totals['total'], 2),
-            // 'amount' => number_format(200, 2),
+            // 'amount' => number_format($invoice->totals['total'], 2),
+            'amount' => number_format(1, 2),
             'description' => 'Invoice Payment',
             'type' => 'MERCHANT',
             'first_name' => $user->name,
@@ -101,7 +101,12 @@ class PesapalController extends Controller
         $payment->status = $status;
         $payment->save();
 
-        return "pesapal_notification_type=$pesapal_notification_type&pesapal_transaction_tracking_id=$tracking_id&pesapal_merchant_reference=$merchant_reference";
+        $response = "pesapal_notification_type=$pesapal_notification_type&pesapal_transaction_tracking_id=$tracking_id&pesapal_merchant_reference=$merchant_reference";
+
+        ob_start();
+        echo $response;
+        ob_flush();
+        exit;
     }
 
 }
