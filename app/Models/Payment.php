@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Bryceandy\Laravel_Pesapal\Payment as Laravel_PesapalPayment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,9 +10,9 @@ class Payment extends Model
 {
     use HasFactory;
 
-    public const STATUS_PENDING = "pending";
-    public const STATUS_SUCCESSFUL = "successful";
-    public const STATUS_FAILED = "failed";
+    public const STATUS_PENDING = "PENDING";
+    public const STATUS_SUCCESSFUL = "COMPLETED";
+    public const STATUS_FAILED = "FAILED";
 
     const METHODS = [
         'mpesa' => 'M-Pesa',
@@ -27,6 +28,14 @@ class Payment extends Model
     public $fillable = [
         'invoice_id', 'status', 'method', 'code', 'generated', 'data'
     ];
+
+    function pesapal_payments(){
+        return $this->hasMany(Laravel_PesapalPayment::class, 'reference');
+    }
+
+    function latest_pesapal_payments(){
+        return $this->hasOne(Laravel_PesapalPayment::class, 'reference')->latest();
+    }
 
     function invoice(){
         return $this->belongsTo(Invoice::class);

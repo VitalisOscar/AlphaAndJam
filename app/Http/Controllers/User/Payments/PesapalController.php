@@ -29,7 +29,6 @@ class PesapalController extends Controller
 
         $user = auth('web')->user();
 
-        // Create a pending payment
         $payment = new Payment([
             'invoice_id' => $invoice->id,
             'method' => 'Pesapal',

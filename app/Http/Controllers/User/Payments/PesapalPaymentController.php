@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Payments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
+use App\Models\Payment as PaymentModel;
 use Bryceandy\Laravel_Pesapal\Facades\Pesapal;
 use Bryceandy\Laravel_Pesapal\Payment;
 use Illuminate\Http\Request;
@@ -94,17 +95,6 @@ class PesapalPaymentController extends Controller
     }
 
     function callback(Request $request){
-        // $tracking_id = $request->get('tracking_id');
-        // $reference = $request->get('merchant_reference');
-
-        // // reference is payment id
-        // $pesapal_payment = PesapalPayment::where('id', $reference)->first();
-        // $pesapal_payment->tracking_id = $tracking_id;
-
-        // $pesapal_payment->save();
-
-        // return view('payments.pesapal.received');
-
         $transaction = Pesapal::getTransactionDetails(
             request('pesapal_merchant_reference'), request('pesapal_transaction_tracking_id')
         );
@@ -113,6 +103,16 @@ class PesapalPaymentController extends Controller
         Payment::modify($transaction);
 
         $status = $transaction['status'];
+
+        $payment = new PaymentModel([
+            'invoice_id' => request('pesapal_merchant_reference'),
+            'method' => 'Pesapal',
+            'generated' => 'system',
+            'status' => $status
+        ]);
+
+        $payment->save();
+
         // also $status = Pesapal::statusByTrackingIdAndMerchantRef(request('pesapal_merchant_reference'), request('pesapal_transaction_tracking_id'));
         // also $status = Pesapal::statusByMerchantRef(request('pesapal_merchant_reference'));
 
