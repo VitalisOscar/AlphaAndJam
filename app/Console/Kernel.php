@@ -26,7 +26,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new PaymentUpdater)->everyMinute();
+        $schedule->job(new PaymentUpdater)
+            ->everyMinute()
+            ->emailOutputTo(['dev@oriscop.com']);
     }
 
     /**
