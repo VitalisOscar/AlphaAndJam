@@ -5,7 +5,6 @@ namespace App\Jobs;
 use App\Models\Invoice;
 use App\Models\Payment;
 use Bryceandy\Laravel_Pesapal\Facades\Pesapal;
-use Bryceandy\Laravel_Pesapal\Payment as Laravel_PesapalPayment;
 use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -48,7 +47,7 @@ class PaymentUpdater implements ShouldQueue
                 // Laravel_PesapalPayment::modify($transaction);
                 // $status = $transaction['status'];
 
-                $status = Laravel_PesapalPayment::statusByMerchantRef($payment->id);
+                $status = Pesapal::statusByMerchantRef($payment->id);
 
                 $payment->status = $status;
 
