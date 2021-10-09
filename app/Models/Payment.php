@@ -33,7 +33,7 @@ class Payment extends Model
         return $this->hasMany(Laravel_PesapalPayment::class, 'reference', 'id');
     }
 
-    function latest_pesapal_payments(){
+    function latest_pesapal_payment(){
         return $this->hasOne(Laravel_PesapalPayment::class, 'reference', 'id')->latest();
     }
 
