@@ -4,21 +4,57 @@ namespace App\Http\Controllers\User\Payments;
 
 use App\Http\Controllers\Controller;
 use App\Models\Invoice;
-use App\Models\Payment;
-use App\Models\PesapalPayment;
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request as Psr7Request;
-use Illuminate\Http\Client\Request as ClientRequest;
-use Illuminate\Support\Facades\Storage;
+use Bryceandy\Laravel_Pesapal\Facades\Pesapal;
+use Bryceandy\Laravel_Pesapal\Payment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Route;
-use Knox\Pesapal\Facades\Pesapal;
 
 class PesapalPaymentController extends Controller
 {
     function __invoke($invoice_number){
+
+
+        // // Create a pending payment
+        // $payment = new Payment([
+        //     'invoice_id' => $invoice->id,
+        //     'method' => 'Pesapal',
+        //     'generated' => 'system',
+        //     'status' => Payment::STATUS_PENDING
+        // ]);
+
+        // if(!$payment->save()){
+        //     return back()->withErrors('Unable to initiate payment. Something went wrong');
+        // }
+
+        // get iframe
+
+
+        // $url = 'pesapal/iframe?p=';
+
+        // foreach($details as $key=>$value){
+        //     $url .= "&{$key}={$value}";
+        // }
+
+        // $iframe = Http::post(config('app.url').'/pesapal/iframe/', $details);
+
+        // return view('payments.pesapal.iframe', compact('iframe'));
+
+
+
+
+
+        // $validator = validator($request->all(), [
+        //     'amount' => 'required|numeric',
+        //     'currency' => 'required|in:TZS,KES,UGX,USD',
+        //     'description' => 'required|min:5',
+        //     'type' => 'required|in:MERCHANT,ORDER',
+        //     'reference' => 'required',
+        //     'first_name' => 'sometimes|required|min:3',
+        //     'last_name' => 'sometimes|required|min:3',
+        //     'email' => 'required_without:phone_number|email',
+        //     'phone_number' => 'required_without:email|numeric',
+        // ])->validate();
+
         $invoice = Invoice::where('number', $invoice_number)->first();
         if($invoice == null){
             return back()->withErrors(['status' => 'The invoice does not exist']);
@@ -34,19 +70,6 @@ class PesapalPaymentController extends Controller
 
         $user = auth('web')->user();
 
-        // Create a pending payment
-        $payment = new Payment([
-            'invoice_id' => $invoice->id,
-            'method' => 'Pesapal',
-            'generated' => 'system',
-            'status' => Payment::STATUS_PENDING
-        ]);
-
-        if(!$payment->save()){
-            return back()->withErrors('Unable to initiate payment. Something went wrong');
-        }
-
-        // get iframe
         $details = array(
             // 'amount' => number_format($invoice->totals['total'], 2),
             'amount' => number_format(1, 2),
@@ -56,19 +79,17 @@ class PesapalPaymentController extends Controller
             'last_name' => '',
             'email' => $user->email,
             'phone_number' => $user->phone,
-            'reference' => $payment->id,
+            'reference' => $invoice->id,
             'currency' => 'KES'
         );
 
-        $url = 'pesapal/iframe?p=';
 
-        foreach($details as $key=>$value){
-            $url .= "&{$key}={$value}";
-        }
+        Payment::create($details);
 
-        $iframe = Http::post(config('app.url').'/pesapal/iframe/', $details);
+        $iframe_src = Pesapal::getIframeSource($details);
 
-        return view('payments.pesapal.iframe', compact('iframe'));
+        return view('payments.pesapal.iframe', compact('iframe_src'));
+
     }
 
     function callback(Request $request){
