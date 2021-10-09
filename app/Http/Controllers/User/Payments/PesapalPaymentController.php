@@ -72,8 +72,8 @@ class PesapalPaymentController extends Controller
         $user = auth('web')->user();
 
         $details = array(
-            'amount' => number_format($invoice->totals['total'], 2),
-            // 'amount' => number_format(1, 2),
+            // 'amount' => number_format($invoice->totals['total'], 2),
+            'amount' => number_format(1, 2),
             'description' => 'Invoice Payment',
             'first_name' => $user->name,
             'last_name' => '',
